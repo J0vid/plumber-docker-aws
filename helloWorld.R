@@ -1,3 +1,5 @@
+#* @apiTitle MGP API
+
 #* @filter cors
 cors <- function(res) {
   res$setHeader("Access-Control-Allow-Origin", "*")
@@ -27,6 +29,21 @@ function(inputValue) {
 function(req) {
   
   theResponse = "Hello, world!"
+  
+  return(theResponse)
+  
+}
+
+#* Run an MGP model
+#* @param GO.term GO term to run
+#* @param mutant Mutant for comparison
+#* @param lambda Regularization strength
+#* @post /mgp
+
+function(req) {
+  
+  load("aws_test.Rdata")
+  theResponse = mddsPLS(Xs = probs.rows, Y = Y, R = 1, lambda = as.numeric(.05))$mod$u[[1]]
   
   return(theResponse)
   
