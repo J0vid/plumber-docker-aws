@@ -43,7 +43,7 @@ function(req) {
 function(req) {
   
   load("aws_test.Rdata")
-  theResponse = mddsPLS(Xs = probs.rows, Y = Y, R = 1, lambda = as.numeric(.05))$mod$u[[1]]
+  theResponse = ddsPLS::mddsPLS(Xs = probs.rows, Y = Y, R = 1, lambda = as.numeric(.05))$mod$u[[1]]
   
   return(theResponse)
   
